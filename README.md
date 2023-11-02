@@ -2,6 +2,9 @@
 
 ## Tugas 1
 
+<details>
+<summary><b>Details</b></summary>
+
 ### Apa perbedaan utama antara stateless dan stateful widget dalam konteks pengembangan aplikasi Flutter?
 1. **StatelessWidget**
     - Tidak Berubah: Sebuah StatelessWidget tidak dapat mengubah statenya selama masa hidupnya. Ini berarti bahwa setelah widget dibuat, nilai-nilai dan konfigurasinya tetap sama.
@@ -30,3 +33,174 @@
 14. **Center:** Sebuah widget yang menengahkan widget anaknya.
 
 ### Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)
+1. **Membuat sebuah program Flutter baru dengan tema inventory seperti tugas-tugas sebelumnya.**
+    - Jalankan *command* `flutter create stock_els` untuk *generate* proyek Flutter
+    - Masuk ke dalam direktori proyek tersebut dengan *command* `cd stock_els`
+2. **Membuat tiga tombol sederhana dengan ikon dan teks**
+    - Pada `main.dart`hapus `MyHomePage(title: 'Flutter Demo Home Page')` menjadi `MyHomePage()`
+    - Pada `menu.dart`:
+    - Tambahkan teks dan card dengan menambahkan barang-barang yang dijual. Define tipe pada list seperti berikut:
+        ```
+        class ShopItem {
+            final String name;
+            final IconData icon;
+
+            ShopItem(this.name, this.icon);
+        }
+        ```
+    - Ubah sifat widget halaman dari stateful menjadi stateless. Lakukan perubahan pada bagian `({super.key, required this.title})` menjadi `({Key? key}) : super(key: key);`. Selain itu, tambahkan barang-barang yang dijual (nama, harga, dan icon barang tersebut) dengan code berikut:
+        ```
+        final List<ShopItem> items = [
+            ShopItem("Lihat Item", Icons.checklist),
+            ShopItem("Tambah Item", Icons.add_shopping_cart),
+            ShopItem("Logout", Icons.logout),
+        ];
+        ```
+    - Lalu ubah method @override `Widget build(BuildContext context)` hingga menjadi seperti ini:
+        ```
+        @override
+        Widget build(BuildContext context) {
+            return Scaffold(
+                appBar: AppBar(
+                    title: const Text(
+                    'Stock Els',
+                    style: TextStyle(color: Colors.white),
+                    ),
+                    backgroundColor: Colors.grey[900],
+                    elevation: 5, // Control the shadow depth
+                    shadowColor: Colors.black, // Color of the shadow
+                ),
+                body: SingleChildScrollView(
+                    // Widget wrapper yang dapat discroll
+                    child: Padding(
+                        padding: const EdgeInsets.all(10.0), // Set padding dari halaman
+                        child: Column(
+                            // Widget untuk menampilkan children secara vertikal
+                            children: <Widget>[
+                                const Padding(
+                                    padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
+                                    // Widget Text untuk menampilkan tulisan dengan alignment center dan style yang sesuai
+                                    child: Text(
+                                        'Stock Els Shop', // Text yang menandakan toko
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            fontSize: 30,
+                                            fontWeight: FontWeight.bold,
+                                        ),
+                                    ),
+                                ),
+                                // Grid layout
+                                GridView.count(
+                                    // Container pada card kita.
+                                    primary: true,
+                                    padding: const EdgeInsets.all(20),
+                                    crossAxisSpacing: 10,
+                                    mainAxisSpacing: 10,
+                                    crossAxisCount: 3,
+                                    shrinkWrap: true,
+                                    children: items.map((ShopItem item) {
+                                        // Iterasi untuk setiap item
+                                        return ShopCard(item);
+                                    }).toList(),
+                                ),
+                            ],
+                        ),
+                    ),
+                ),
+            );
+        }
+        ```
+    - Tampilkan card dengan membuat widget stateless baru:
+        ```
+        class ShopCard extends StatelessWidget {
+            final ShopItem item;
+
+            const ShopCard(this.item, {super.key}); // Constructor
+
+            @override
+            Widget build(BuildContext context) {
+                return Material(
+                color: Colors.indigo,
+                child: InkWell(
+                    child: Container(
+                    // Container untuk menyimpan Icon dan Text
+                    padding: const EdgeInsets.all(8),
+                    child: Center(
+                        child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                            Icon(
+                            item.icon,
+                            color: Colors.white,
+                            size: 30.0,
+                            ),
+                            const Padding(padding: EdgeInsets.all(3)),
+                            Text(
+                            item.name,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(color: Colors.white),
+                            ),
+                        ],
+                        ),
+                    ),
+                    ),
+                ),
+                );
+            }
+            }
+        ```
+2. **Memunculkan Snackbar**
+    - Di `menu.dart` pada `class ShopCard extends StatelessWidget` tambahkan pada method override hingga menjadi seperti di bawah ini:
+    ```
+    @override
+    Widget build(BuildContext context){
+        return Material(
+            ....
+            child: InkWell(
+                onTap: () {
+                // Memunculkan SnackBar ketika diklik
+                ScaffoldMessenger.of(context)
+                    ..hideCurrentSnackBar()
+                    ..showSnackBar(SnackBar(
+                        content: Text("Kamu telah menekan tombol ${item.name}!")));
+                },
+                ....
+            )
+        )
+    }
+               
+    ```
+4. Bonus
+    - Buat parameter baru
+    ```
+    final List<ShopItem> items = [
+        ShopItem("Lihat Item", Icons.checklist, Colors.lightGreen),
+        ShopItem("Tambah Item", Icons.add_shopping_cart, Colors.lightBlue),
+        ShopItem("Logout", Icons.logout, Colors.redAccent),
+    ];
+    ```
+    ```
+    class ShopItem {
+        final String name;
+        final IconData icon;
+        final Color color; // Menambahkan field baru untuk warna
+
+        ShopItem(this.name, this.icon, this.color);
+    }
+    ```
+    - Tambahkan warna yang diinginkan pada class `ShopCard`
+    ```
+    class ShopCard extends StatelessWidget {
+        final ShopItem item;
+
+        const ShopCard(this.item, {super.key}); // Constructor
+
+        @override
+        Widget build(BuildContext context) {
+            return Material(
+            color: item.color, // Menggunakan warna dari item
+            // (Sisa kode yang sama seperti sebelumnya)
+            );
+        }
+    }
+    ```
