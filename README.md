@@ -34,8 +34,8 @@
 
 ### Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)
 1. **Membuat sebuah program Flutter baru dengan tema inventory seperti tugas-tugas sebelumnya.**
-    - Jalankan *command* `flutter create stock_els` untuk *generate* proyek Flutter
-    - Masuk ke dalam direktori proyek tersebut dengan *command* `cd stock_els`
+    - Jalankan *command* `flutter create shs_store` untuk *generate* proyek Flutter
+    - Masuk ke dalam direktori proyek tersebut dengan *command* `cd shs_store`
 2. **Membuat tiga tombol sederhana dengan ikon dan teks**
     - Pada `main.dart`hapus `MyHomePage(title: 'Flutter Demo Home Page')` menjadi `MyHomePage()`
     - Pada `menu.dart`:
@@ -63,7 +63,7 @@
             return Scaffold(
                 appBar: AppBar(
                     title: const Text(
-                    'Stock Els',
+                    'SHS store',
                     style: TextStyle(color: Colors.white),
                     ),
                     backgroundColor: Colors.grey[900],
@@ -81,7 +81,7 @@
                                     padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
                                     // Widget Text untuk menampilkan tulisan dengan alignment center dan style yang sesuai
                                     child: Text(
-                                        'Stock Els Shop', // Text yang menandakan toko
+                                        'SHS Store', // Text yang menandakan toko
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                             fontSize: 30,
