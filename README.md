@@ -47,6 +47,8 @@ Penerapan clean architecture pada aplikasi Flutter bertujuan untuk memisahkan ko
 
 ### Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial)
 
+</details>
+
 ## Tugas 1
 
 <details>
@@ -251,3 +253,4 @@ Penerapan clean architecture pada aplikasi Flutter bertujuan untuk memisahkan ko
         }
     }
     ```
+</details>
