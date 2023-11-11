@@ -1,9 +1,56 @@
 # SHS Store
 
+## Tugas 2
+
+<details>
+<summary><b>Details 📃</b></summary>
+
+### Jelaskan perbedaan antara Navigator.push() dan Navigator.pushReplacement(), disertai dengan contoh mengenai penggunaan kedua metode tersebut yang tepat!
+**Navigator.push()**
+    - **Pengertian:** Metode `Navigator.push()` digunakan untuk menambahkan `Route` baru ke tumpukan navigator, yang memungkinkan pengguna untuk kembali ke `Route` sebelumnya melalui tombol back atau gestur kembali.
+    - **Contoh:** Aplikasi yang memiliki daftar produk, ketika ingin melihat detail dari sebuah produk. Dapat akan menggunakan Navigator.push() untuk menavigasi ke halaman detail produk
+**Navigator.pushReplacement()**
+    - **Pengertian:** Metode `Navigator.pushReplacement()` digunakan untuk menggantikan `Route` saat ini dengan `Route` baru pada tumpukan navigator. Ini berguna ketika Anda tidak ingin pengguna kembali ke `Route` sebelumnya.
+    - **Contoh:** Sebuah kasus penggunaan yang umum adalah dalam proses login atau logout. Setelah pengguna berhasil login, Anda mungkin tidak ingin mereka kembali ke halaman login lagi dengan menekan tombol back
+
+### Jelaskan masing-masing layout widget pada Flutter dan konteks penggunaannya masing-masing!
+1. **Container:** Digunakan untuk mendekorasi child widget-nya dengan warna, border, margin, dan padding. Juga dapat digunakan untuk transformasi geometrik.
+2. **Column & Row:** Digunakan untuk layout dalam bentuk vertikal (Column) atau horizontal (Row). Baik Column maupun Row dapat memiliki beberapa child widgets.
+3. **Stack:** Memungkinkan widget untuk ditumpuk di atas satu sama lain. Berguna untuk posisi widget di atas widget lainnya, seperti latar belakang dengan teks di atasnya.
+4. **Wrap:** Mirip dengan Row atau Column tetapi bisa otomatis beralih ke baris atau kolom berikutnya jika tidak ada ruang.
+5. **Padding:** Memberikan padding pada child widget-nya, yaitu memberikan spasi tambahan di sekitar widget.
+6. **Align & Center:** Digunakan untuk menentukan posisi widget-nya dalam parent widget. Center akan menengahkan child di dalamnya.
+7. **Expanded & Flexible:** Memberi child widget fleksibilitas dalam hal ukuran, dengan mengisi ruang yang tersedia atau menyesuaikan ukurannya sesuai dengan faktor flex.
+8. **ListView:** Digunakan untuk membuat daftar scrollable yang dapat menampung banyak children.
+9. **GridView:** Layout dalam bentuk grid yang scrollable, berguna untuk menampilkan banyak data dalam bentuk grid.
+10. **ConstrainedBox & SizedBox:** Digunakan untuk membatasi ukuran widget child, bisa secara spesifik atau dengan batasan tertentu.
+11. **AspectRatio:** Memaksa child widget-nya untuk memiliki aspek rasio tertentu.
+12. **FractionallySizedBox:** Mengatur ukuran widget child-nya menjadi persentase tertentu dari ukuran parent widget-nya.
+13. **Table:** Menata widgets dalam format tabel dengan baris dan kolom yang tetap.
+14. **Flow:** Memberikan kontrol penataan yang lebih kompleks, bisa membuat layout yang tidak bisa dibuat dengan Row atau Column.
+15. **RichText:** Memungkinkan kombinasi teks dengan gaya yang berbeda-beda di dalam satu paragraf.
+
+### Sebutkan apa saja elemen input pada form yang kamu pakai pada tugas kali ini dan jelaskan mengapa kamu menggunakan elemen input tersebut!
+1. **TextFormField untuk Nama Item:**
+    Alasan Penggunaan: Input ini digunakan untuk mengumpulkan nama item yang akan ditambahkan. Ini merupakan informasi dasar yang diperlukan untuk setiap item dalam toko.
+2. **TextFormField untuk Amount:**
+    Alasan Penggunaan: Input ini dirancang untuk mengumpulkan jumlah atau kuantitas item. Menggunakan input teks yang dikonversi ke integer memungkinkan validasi input untuk memastikan bahwa pengguna memasukkan nilai numerik.
+3. **TextFormField untuk Deskripsi:**
+    Alasan Penggunaan: Input ini digunakan untuk mendapatkan deskripsi tambahan tentang item. Deskripsi ini dapat berisi informasi yang lebih detail yang tidak tertangkap hanya dengan nama item, seperti ukuran, warna, atau fitur spesifik lainnya.
+
+### Bagaimana penerapan clean architecture pada aplikasi Flutter?
+Penerapan clean architecture pada aplikasi Flutter bertujuan untuk memisahkan kode menjadi lapisan-lapisan yang tidak tergantung secara langsung satu sama lain, sehingga memudahkan dalam pengujian, pemeliharaan, dan skalabilitas aplikasi. Berikut ini adalah lapisan-lapisan umum dalam clean architecture yang bisa diaplikasikan pada Flutter:
+1. **Presentation Layer:** Menyimpan semua kode yang berhubungan dengan UI
+2. **Domain Layer:** Lapisan inti yang menentukan bisnis logika aplikasi
+3. **Data Layer:** Mengimplementasikan `Repository Interfaces` yang didefinisikan di domain layer
+4. **Infrastructure Layer (opsional):** Ekstensi dari data layer
+
+### Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial)
+
 ## Tugas 1
 
 <details>
-<summary><b>Details</b></summary>
+<summary><b>Details 📃</b></summary>
 
 ### Apa perbedaan utama antara stateless dan stateful widget dalam konteks pengembangan aplikasi Flutter?
 1. **StatelessWidget**

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shs_store/left_drawer.dart';
-import 'package:shs_store/shop_card.dart';
+import 'package:shs_store/widgets/left_drawer.dart';
+import 'package:shs_store/widgets/shop_card.dart';
 
 class MyHomePage extends StatelessWidget {
     MyHomePage({Key? key}) : super(key: key);
@@ -22,6 +22,8 @@ class MyHomePage extends StatelessWidget {
                 elevation: 4, // Control the shadow depth
                 shadowColor: Colors.black, // Color of the shadow
             ),
+            // Masukkan drawer sebagai parameter nilai drawer dari widget Scaffold
+            drawer: const LeftDrawer(),
             body: SingleChildScrollView(
                 // Widget wrapper yang dapat discroll
                 child: Padding(
@@ -33,7 +35,7 @@ class MyHomePage extends StatelessWidget {
                                 padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
                                 // Widget Text untuk menampilkan tulisan dengan alignment center dan style yang sesuai
                                 child: Text(
-                                    'PBP Shop', // Text yang menandakan toko
+                                    'SHS Store', // Text yang menandakan toko
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         fontSize: 30,
