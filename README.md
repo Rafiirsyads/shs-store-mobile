@@ -48,7 +48,7 @@ Penerapan clean architecture pada aplikasi Flutter bertujuan untuk memisahkan ko
 
 ### Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial)\
 1. Membuat minimal satu halaman baru pada aplikasi, yaitu halaman formulir tambah item baru dengan ketentuan sebagai berikut:
-    Buat file `shoplist_form.dart` pada direktori `lib`
+    - Buat file `shoplist_form.dart` pada direktori `lib`
     ```
     import 'package:flutter/material.dart';
     import 'package:stock_els/widgets/left_drawer.dart';
@@ -68,7 +68,7 @@ Penerapan clean architecture pada aplikasi Flutter bertujuan untuk memisahkan ko
     }
     ```
 2. Memakai minimal tiga elemen input, yaitu `name`, `amount`, `description`. Tambahkan elemen input sesuai dengan model pada aplikasi tugas Django yang telah kamu buat.
-    Edit class `_ShopFormPageState` di file `shoplist_form.dart`
+    - Edit class `_ShopFormPageState` di file `shoplist_form.dart`
     ```
     class _ShopFormPageState extends State<ShopFormPage> {
         final _formKey = GlobalKey<FormState>();
@@ -223,7 +223,7 @@ Penerapan clean architecture pada aplikasi Flutter bertujuan untuk memisahkan ko
     }
     ```
 3. Memiliki sebuah tombol `Save`
-    Edit bagian `return Scaffold(...)` pada file `shoplist_form.dart`
+    - Edit bagian `return Scaffold(...)` pada file `shoplist_form.dart`
     ```
     Align(
         alignment: Alignment.bottomCenter,
@@ -300,14 +300,14 @@ Penerapan clean architecture pada aplikasi Flutter bertujuan untuk memisahkan ko
         },
         ```
 5. Mengarahkan pengguna ke halaman form tambah item baru ketika menekan tombol Tambah Item pada halaman utama.
-    Tambah drawer di `main.dart`
+    - Tambah drawer di `main.dart`
     ```
     import 'package:stock_els/widgets/left_drawer.dart';
     ...
     drawer: const LeftDrawer(),
     ...
     ```
-    Tambahkan navigator di `shop_card.dart`
+    - Tambahkan navigator di `shop_card.dart`
     ```
     if (item.name == "Tambah Item") {
         Navigator.push(
@@ -317,7 +317,7 @@ Penerapan clean architecture pada aplikasi Flutter bertujuan untuk memisahkan ko
     }
     ```
 6. Memunculkan data sesuai isi dari formulir yang diisi dalam sebuah pop-up setelah menekan tombol Save pada halaman formulir tambah item baru.
-    Edit class `_ShopFormPageState` di `shoplist_form.dart`
+    - Edit class `_ShopFormPageState` di `shoplist_form.dart`
     ```
     onPressed: () {
         if (_formKey.currentState!.validate()) {
