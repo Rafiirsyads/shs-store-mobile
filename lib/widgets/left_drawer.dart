@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shs_store/screens/menu.dart';
 import 'package:shs_store/screens/shoplist_form.dart';
-import 'package:shs_store/screens/itemlist_page.dart';
 
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});
@@ -18,7 +17,7 @@ class LeftDrawer extends StatelessWidget {
             child: Column(
               children: [
                 Text(
-                  'SHS_Store',
+                  'SHS Store',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 30,
@@ -62,10 +61,6 @@ class LeftDrawer extends StatelessWidget {
             leading: const Icon(Icons.view_list),
             title: const Text('Lihat Produk'),
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const ItemListPage()),
-              );
             },
           ),
         ],
