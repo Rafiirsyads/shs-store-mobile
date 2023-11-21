@@ -427,6 +427,7 @@
         child: const Text('Back'),
         ),
         ```
+</details>
 
 ## Tugas 8
 
